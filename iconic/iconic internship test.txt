@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+    }
+    #topics {
+      width: 20%; /* Adjusted width */
+      background-color: #f2f2f2;
+      padding: 10px 20px; /* Adjusted padding */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Align center horizontally */
+      justify-content: space-between; /* Adjusted to space between */
+      position: relative; /* Added */
+    }
+    #habitat {
+      margin-top: 20px; /* Adjusted margin */
+    }
+    #design-build {
+      margin-top: 5px; /* Adjusted margin */
+    }
+    .topic-links {
+      margin: auto; /* Center the links */
+    }
+    .topic-links ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .topic-links ul li {
+      margin-bottom: 10px;
+    }
+    .topic-links ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    .social-icons {
+      position: absolute;
+      bottom: 10px; /* Adjusted bottom */
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+    }
+    .social-icons a {
+      display: inline-block;
+      margin: 0 5px;
+    }
+    #right-image-container {
+      width: 80%; /* Adjusted width */
+      position: relative;
+    }
+    #right-image {
+      width: 100%; /* Adjusted width */
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out; /* Added transition */
+    }
+    #right-image.fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 9999;
+      cursor: zoom-out; /* Adjust cursor */
+    }
+  </style>
+</head>
+<body>
+  <div id="topics">
+    <h3 id="habitat">Habitat</h3>
+    <h4 id="design-build">DESIGN+BUILD</h4>
+    <div class="topic-links">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/" target="_blank"><img src="facebook-logo.png" alt="Facebook"></a>
+      <a href="https://www.linkedin.com/" target="_blank"><img src="linkedin-logo.png" alt="LinkedIn"></a>
+      <a href="#" onclick="closeWindow();"><img src="close-icon.png" alt="Close"></a>
+    </div>
+  </div>
+  <div id="right-image-container">
+    <img id="right-image" src="C:/Users/ELCOT/Downloads/kd.jpg" alt="Your Image">
+  </div> <!-- Placeholder for right image -->
+  <script>
+    const rightImage = document.getElementById('right-image');
+    rightImage.addEventListener('click', toggleFullScreen);
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        rightImage.classList.add('fullscreen');
+        document.documentElement.requestFullscreen();
+      } else {
+        rightImage.classList.remove('fullscreen');
+        document.exitFullscreen();
+      }
+    }
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "Escape") {
+        if (document.fullscreenElement) {
+          rightImage.classList.remove('fullscreen');
+          document.exitFullscreen();
+        }
+      }
+    });
+
+    function closeWindow() {
+      window.close();
+    }
+  </script>
+</body>
+</html>
